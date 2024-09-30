@@ -91,8 +91,6 @@ class GFG {
 // } Driver Code Ends
 
 
-
-
 // User function Template for Java
 
 /*
@@ -114,17 +112,34 @@ class Solution {
     // values of both the BST in a sorted order.
     public List<Integer> merge(Node root1, Node root2) {
         // Write your code here
-        List<Integer>arr=new ArrayList<>();
-        inorder(root1,arr);
-        inorder(root2,arr);
-        Collections.sort(arr);
-        return arr;
+        List<Integer>list1 = new ArrayList<>();
+        List<Integer>list2 = new ArrayList<>();
+        List<Integer>result = new ArrayList<>();
+        
+        inOrderTraversal(root1,list1);
+        inOrderTraversal(root2,list2);
+        
+        int i = 0, j = 0;
+        while(i<list1.size() && j<list2.size()){
+            if(list1.get(i)<=list2.get(j))
+                result.add(list1.get(i++));
+            else
+                result.add(list2.get(j++));
+        }
+        while(i<list1.size())
+            result.add(list1.get(i++));
+            
+        while(j<list2.size())
+            result.add(list2.get(j++));
+            
+        return result;
     }
-    void inorder(Node root,List<Integer>arr){
+    private void inOrderTraversal(Node root, List<Integer>list){
         if(root==null)
             return;
-        inorder(root.left,arr);
-        arr.add(root.data);
-        inorder(root.right,arr);
+            
+        inOrderTraversal(root.left,list);
+        list.add(root.data);
+        inOrderTraversal(root.right,list);
     }
 }
