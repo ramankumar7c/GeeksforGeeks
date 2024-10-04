@@ -36,7 +36,7 @@ class Solution {
         int n = nums.size();
         List<Integer> res = new ArrayList<>();
 
-        if (n == 0) return Arrays.asList(-1);
+        if (n == 0) return Arrays.asList(-1); 
 
         int num1 = -1, num2 = -1, c1 = 0, c2 = 0;
 
@@ -59,7 +59,6 @@ class Solution {
 
         c1 = 0;
         c2 = 0;
-
         for (int x : nums) {
             if (x == num1) c1++;
             else if (x == num2) c2++;
@@ -68,7 +67,7 @@ class Solution {
         if (c1 > n / 3) res.add(num1);
         if (c2 > n / 3) res.add(num2);
 
-        if (res.isEmpty()) res.add(-1);
+        if (res.isEmpty()) res.add(-1); 
 
         return res;
     }
